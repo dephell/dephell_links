@@ -4,7 +4,7 @@ from hashlib import sha256
 from urllib.parse import unquote
 
 # app
-from ..utils import cached_property
+from ._cached_property import cached_property
 
 
 class _PathLink:
