@@ -44,15 +44,18 @@ class _PathLink:
         return name or None
 
     @cached_property
-    def hashes(self):
-        with self.short.open('rb') as stream:
+    def hash(self) -> str:
+        with open(self.short, 'rb') as stream:
             content = stream.read()
         hasher = sha256()
         hasher.update(content)
-        return 'sha256:' + hasher.digest()
+        return 'sha256:' + hasher.hexdigest()
 
     def __str__(self):
         return self.long
+
+    def __repr__(self) -> str:
+        return '{}({})'.format(type(self).__name__, str(self))
 
 
 class FileLink(_PathLink):
