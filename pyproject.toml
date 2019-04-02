@@ -1,0 +1,24 @@
+[tool.dephell.main]
+from = {format = "poetry", path = "pyproject.toml"}
+to = {format = "setuppy", path = "setup.py"}
+
+[tool.poetry]
+name = "dephell-links"
+version = "0.1.0"
+authors = ["Gram <master_fess@mail.ru>"]
+description = "Parse dependency links"
+readme = "README.md"
+license = "MIT"
+repository = "https://github.com/dephell/dephell_links"
+keywords = ["dephell", "packaging", "links", "pypi"]
+# https://pypi.org/classifiers/
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.5"
