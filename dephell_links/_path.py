@@ -8,8 +8,6 @@ from ._cached_property import cached_property
 
 
 class _PathLink:
-    _check = NotImplemented
-
     def __init__(self, link):
         self.short = link.split('#')[0]
         self.long = link
@@ -28,6 +26,10 @@ class _PathLink:
             return
 
         return cls(link)
+
+    @staticmethod
+    def _check(path: str) -> bool:
+        raise NotImplementedError
 
     @property
     def name(self):
@@ -54,8 +56,18 @@ class _PathLink:
 
 
 class FileLink(_PathLink):
-    _check = os.path.isfile
+
+    @staticmethod
+    def _check(path: str) -> bool:
+        if os.path.isfile(path):
+            return True
+        if '://' in path:
+            return False
+        return path.endswith('.py')
 
 
 class DirLink(_PathLink):
-    _check = os.path.isdir
+
+    @staticmethod
+    def _check(path: str) -> bool:
+        return os.path.isdir(path)
