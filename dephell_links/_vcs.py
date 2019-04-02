@@ -1,7 +1,7 @@
 # built-in
 import re
 
-# project
+# external
 import attr
 
 
