@@ -1,8 +1,6 @@
-
-
 # project
 import pytest
-from dephell.links import URLLink
+from dephell_links import URLLink
 
 
 @pytest.mark.parametrize('url, name', [

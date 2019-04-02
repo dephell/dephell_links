@@ -1,8 +1,6 @@
-
-
 # project
 import pytest
-from dephell.links.vcs import VCSLink
+from dephell_links import VCSLink
 
 
 @pytest.mark.parametrize('url, params', [
