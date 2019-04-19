@@ -15,20 +15,20 @@ class URLLink:
     @classmethod
     def parse(cls, link: str) -> Optional['URLLink']:
         if '@' in link:
-            return
+            return None
         if '.git' in link:
-            return
+            return None
         if link.startswith('file://'):
-            return
+            return None
 
         parsed = urlparse(link)
         if not parsed.scheme:
-            return
+            return None
         if not parsed.netloc:
-            return
+            return None
         # file extension required
         if '.' not in parsed.path.rstrip('/').rsplit('/', maxsplit=1)[-1]:
-            return
+            return None
         return cls(link)
 
     @property

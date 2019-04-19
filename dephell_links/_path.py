@@ -2,28 +2,29 @@
 import os.path
 from hashlib import sha256
 from urllib.parse import unquote
+from typing import Optional
 
 # app
 from ._cached_property import cached_property
 
 
 class _PathLink:
-    def __init__(self, link):
+    def __init__(self, link: str):
         self.short = link.split('#')[0]
         self.long = link
 
     @classmethod
-    def parse(cls, link):
+    def parse(cls, link) -> Optional['_PathLink']:
         if '@' in link:
-            return
+            return None
         if link.startswith('file://'):
             link = link[len('file://'):]
         if '://' in link:
-            return
+            return None
 
         path = link.replace('/', os.path.sep).split('#')[0]
         if not cls._check(path):
-            return
+            return None
 
         return cls(link)
 
@@ -32,7 +33,7 @@ class _PathLink:
         raise NotImplementedError
 
     @property
-    def name(self):
+    def name(self) -> Optional[str]:
         # get last part of path
         path = os.path.abspath(self.short.replace('/', os.path.sep))
         name = os.path.basename(path)
@@ -51,7 +52,7 @@ class _PathLink:
         hasher.update(content)
         return 'sha256:' + hasher.hexdigest()
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.long
 
     def __repr__(self) -> str:
