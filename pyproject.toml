@@ -2,9 +2,23 @@
 from = {format = "poetry", path = "pyproject.toml"}
 to = {format = "setuppy", path = "setup.py"}
 
+[tool.dephell.flake8]
+from = {format = "pip", path = "requirements-flake.txt"}
+python = ">=3.6"
+command = "flake8"
+
+[tool.dephell.pytest]
+from = {format = "poetry", path = "pyproject.toml"}
+command = "pytest tests/"
+
+[tool.dephell.typing]
+from = {format = "poetry", path = "pyproject.toml"}
+command = "mypy --ignore-missing-imports --allow-redefinition dephell_links"
+
+
 [tool.poetry]
 name = "dephell_links"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Gram <master_fess@mail.ru>"]
 description = "Parse dependency links"
 readme = "README.md"
@@ -17,9 +31,24 @@ classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python",
+    "Topic :: Internet :: WWW/HTTP :: Site Management :: Link Checking",
     "Topic :: Software Development :: Libraries :: Python Modules",
+
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: Unix",
 ]
 
 [tool.poetry.dependencies]
 python = ">=3.5"
 attrs = "*"
+
+[tool.poetry.dev-dependencies]

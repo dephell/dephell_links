@@ -13,11 +13,11 @@ _links = (
 )
 
 
-def parse_link(link):
+def parse_link(link: str):
     if not link:
-        return
+        return None
     for parser in _links:
-        parsed = parser.parse(link)
+        parsed = parser.parse(link)  # type: ignore
         if parsed is not None:
             return parsed
     return UnknownLink(link)

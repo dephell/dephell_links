@@ -12,5 +12,5 @@ __all__ = [
     'parse_link',
     'UnknownLink',
     'URLLink',
-    'VCSLink'
+    'VCSLink',
 ]
