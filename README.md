@@ -1,5 +1,11 @@
 # DepHell Links
 
+[![travis](https://travis-ci.org/dephell/dephell_links.svg?branch=master)](https://travis-ci.org/dephell/dephell_links)
+[![appveyor](https://ci.appveyor.com/api/projects/status/github/dephell/dephell_links?svg=true)](https://ci.appveyor.com/project/orsinium/dephell-links)
+[![MIT License](https://img.shields.io/pypi/l/dephell-links.svg)](https://github.com/dephell/dephell_links/blob/master/LICENSE)
+
+Parse dependency links.
+
 ## Installation
 
 Install from [PyPI](https://pypi.org/project/dephell-links/):
