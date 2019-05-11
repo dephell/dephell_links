@@ -33,7 +33,9 @@ class URLLink:
 
     @property
     def name(self) -> Optional[str]:
-        parsed = urlparse(self.short)
+        parsed = urlparse(self.long)
+        if parsed.fragment.startswith('egg='):
+            return parsed.fragment[4:]
         if parsed.netloc in ('github.com', 'bitbucket.org', 'gitlab.com'):
             name = parsed.path.strip('/').split('/', maxsplit=2)[1]
             return name
