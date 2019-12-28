@@ -4,6 +4,7 @@ from ._path import DirLink, FileLink
 from ._unknown import UnknownLink
 from ._url import URLLink
 from ._vcs import VCSLink
+from ._constants import IS_WINDOWS
 
 
 __all__ = [
@@ -13,4 +14,5 @@ __all__ = [
     'UnknownLink',
     'URLLink',
     'VCSLink',
+    'IS_WINDOWS',
 ]
