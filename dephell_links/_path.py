@@ -6,6 +6,7 @@ from typing import Optional
 
 # app
 from ._cached_property import cached_property
+from ._constants import IS_WINDOWS
 
 
 class _PathLink:
@@ -17,7 +18,10 @@ class _PathLink:
     def parse(cls, link) -> Optional['_PathLink']:
         if '@' in link:
             return None
-        if link.startswith('file://'):
+        if IS_WINDOWS and link.startswith('file:///'):
+            # cygwin-like absolute paths (file:///c:/foo/bar)
+            link = link[len('file:///'):]
+        elif link.startswith('file://'):
             link = link[len('file://'):]
         if '://' in link:
             return None
